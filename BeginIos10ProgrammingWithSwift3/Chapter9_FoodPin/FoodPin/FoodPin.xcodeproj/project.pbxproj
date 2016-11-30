@@ -12,6 +12,7 @@
 		B707E9CD1DEE97530044FCD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B707E9CC1DEE97530044FCD0 /* Assets.xcassets */; };
 		B707E9D01DEE97530044FCD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B707E9CE1DEE97530044FCD0 /* LaunchScreen.storyboard */; };
 		B707E9D81DEE9A860044FCD0 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B707E9D71DEE9A860044FCD0 /* RestaurantTableViewController.swift */; };
+		B7624ACA1DEF0FCD00E0F78E /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7624AC91DEF0FCD00E0F78E /* RestaurantTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B707E9CF1DEE97530044FCD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B707E9D11DEE97530044FCD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B707E9D71DEE9A860044FCD0 /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
+		B7624AC91DEF0FCD00E0F78E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				B707E9CE1DEE97530044FCD0 /* LaunchScreen.storyboard */,
 				B707E9D11DEE97530044FCD0 /* Info.plist */,
 				B707E9D71DEE9A860044FCD0 /* RestaurantTableViewController.swift */,
+				B7624AC91DEF0FCD00E0F78E /* RestaurantTableViewCell.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B707E9D81DEE9A860044FCD0 /* RestaurantTableViewController.swift in Sources */,
+				B7624ACA1DEF0FCD00E0F78E /* RestaurantTableViewCell.swift in Sources */,
 				B707E9C61DEE97530044FCD0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +301,7 @@
 				B707E9D61DEE97530044FCD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
