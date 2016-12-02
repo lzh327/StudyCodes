@@ -61,7 +61,7 @@ class RestaurantTableViewController: UITableViewController {
 //        cell.locationLabel.text = restaurantLocations[indexPath.row]
 //        cell.typeLabel.text = restaurantTypes[indexPath.row]
         
-        cell.cellSet(name: restaurantNames, location: restaurantLocations, type: restaurantTypes, thumbnail: restaurantImages, index: indexPath.row)
+        cell.cellSet(name: restaurantNames[indexPath.row], location: restaurantLocations[indexPath.row], type: restaurantTypes[indexPath.row], thumbnail: restaurantImages[indexPath.row])
         
         cell.thumbnailImageView.layer.cornerRadius = 30
         cell.thumbnailImageView.clipsToBounds = true

@@ -26,11 +26,11 @@ class RestaurantTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func cellSet(name: [String], location: [String], type: [String], thumbnail: [String], index: Int) {
-        self.nameLabel.text = name[index]
-        self.locationLabel.text = location[index]
-        self.typeLabel.text = type[index]
-        self.thumbnailImageView.image = UIImage(named: thumbnail[index])
+    func cellSet(name: String, location: String, type: String, thumbnail: String) {
+        self.nameLabel.text = name
+        self.locationLabel.text = location
+        self.typeLabel.text = type
+        self.thumbnailImageView.image = UIImage(named: thumbnail)
     }
 
 }

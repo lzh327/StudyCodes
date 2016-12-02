@@ -48,7 +48,7 @@ class RestaurantTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
 
         // Configure the cell...
-        cell.cellSet(name: restaurantNames, location: restaurantLocations, type: restaurantTypes, thumbnail: restaurantImages, index: indexPath.row)
+        cell.cellSet(name: restaurantNames[indexPath.row], location: restaurantLocations[indexPath.row], type: restaurantTypes[indexPath.row], thumbnail: restaurantImages[indexPath.row])
         
 
         return cell
