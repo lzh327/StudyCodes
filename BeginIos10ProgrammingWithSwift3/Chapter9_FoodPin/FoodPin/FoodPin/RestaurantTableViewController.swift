@@ -77,49 +77,49 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Create an option menu as an action sheet
-        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
-        //Add Cancel actions to the menu
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        optionMenu.addAction(cancelAction)
-        
-        //The Call Action
-        let callActionHandler = { (action: UIAlertAction!) -> Void in
-            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
-            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertMessage, animated: true, completion: nil)
-        }
-        
-        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
-        optionMenu.addAction(callAction)
-        
-        //The Check-in Action
-        var checkInAction: UIAlertAction
-        if self.restaurantIsVisited[indexPath.row] {
-            checkInAction = UIAlertAction(title: "Undo Check in", style: .default, handler: {
-                (action: UIAlertAction!) -> Void in
-                let cell = tableView.cellForRow(at: indexPath)
-                cell?.accessoryType = .none
-                self.restaurantIsVisited[indexPath.row] = false
-            })
-        } else {
-            checkInAction = UIAlertAction(title: "Check in", style: .default, handler: {
-                (action: UIAlertAction!) -> Void in
-                let cell = tableView.cellForRow(at: indexPath)
-                cell?.accessoryType = .checkmark
-                self.restaurantIsVisited[indexPath.row] = true
-            })
-        }
-        
-        optionMenu.addAction(checkInAction)
-        
-        //Display the menu
-        self.present(optionMenu, animated: true, completion: nil)
-        //Deselect the row
-        tableView.deselectRow(at: indexPath, animated: false)
-        
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        //Create an option menu as an action sheet
+//        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+//        //Add Cancel actions to the menu
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        optionMenu.addAction(cancelAction)
+//        
+//        //The Call Action
+//        let callActionHandler = { (action: UIAlertAction!) -> Void in
+//            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
+//            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            self.present(alertMessage, animated: true, completion: nil)
+//        }
+//        
+//        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
+//        optionMenu.addAction(callAction)
+//        
+//        //The Check-in Action
+//        var checkInAction: UIAlertAction
+//        if self.restaurantIsVisited[indexPath.row] {
+//            checkInAction = UIAlertAction(title: "Undo Check in", style: .default, handler: {
+//                (action: UIAlertAction!) -> Void in
+//                let cell = tableView.cellForRow(at: indexPath)
+//                cell?.accessoryType = .none
+//                self.restaurantIsVisited[indexPath.row] = false
+//            })
+//        } else {
+//            checkInAction = UIAlertAction(title: "Check in", style: .default, handler: {
+//                (action: UIAlertAction!) -> Void in
+//                let cell = tableView.cellForRow(at: indexPath)
+//                cell?.accessoryType = .checkmark
+//                self.restaurantIsVisited[indexPath.row] = true
+//            })
+//        }
+//        
+//        optionMenu.addAction(checkInAction)
+//        
+//        //Display the menu
+//        self.present(optionMenu, animated: true, completion: nil)
+//        //Deselect the row
+//        tableView.deselectRow(at: indexPath, animated: false)
+//        
+//    }
     
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
@@ -169,6 +169,29 @@ class RestaurantTableViewController: UITableViewController {
         deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         
         return [deleteAction, shareAction]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRestaurantDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! RestaurantDetailViewController
+                destinationController.restaurantImage = restaurantImages[indexPath.row]
+                destinationController.restaurantName = restaurantNames[indexPath.row]
+                destinationController.restaurantType = restaurantTypes[indexPath.row]
+                destinationController.restaurantLocation = restaurantLocations[indexPath.row]
+                
+                //In this place, I first use the following code:
+                ////destinationController.restaurantNameLabel.text = restaurantNames[indexPath.row]
+                ////destinationController.restaurantTypeLabel.text = restaurantTypes[indexPath.row]
+                ////destinationController.restaurantLocationLabel.text = restaurantLocations[indexPath.row]
+                //But it will be crash! Because a segue triggered before the visual transition occurs.
+                //That means when the function of prepare called, the destinationController's object which defined in storyboard has not been initialized!
+                //So the program crashed and said restaurantName is nil!
+                //I resolve this problem by define the restaurantName, restaurantType and restaurantLocation variable in RestaurantDetailViewController, and initialize them as "", and set them in prepare function. they will not be nil.
+                //Then pass them to the label text in viewDidLoad method, please see the RestaurantDetailViewController.swift as a reference.
+                
+            }
+        }
     }
  
 

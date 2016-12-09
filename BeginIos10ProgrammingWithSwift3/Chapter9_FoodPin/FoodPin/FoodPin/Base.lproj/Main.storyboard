@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nU7-M4-9sT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gSc-PB-f1B">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurant Table View Controller-->
+        <!--Food Pin-->
         <scene sceneID="EUz-r5-njL">
             <objects>
                 <tableViewController id="nU7-M4-9sT" customClass="RestaurantTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="raO-BC-aKD" id="WjK-E1-3j9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kZA-0C-pfE">
@@ -74,6 +74,7 @@
                                     <outlet property="nameLabel" destination="4m5-1p-Mc5" id="Kc9-II-jSh"/>
                                     <outlet property="thumbnailImageView" destination="e7h-aJ-y3z" id="qkJ-kF-4qf"/>
                                     <outlet property="typeLabel" destination="xzf-hh-emo" id="R6j-av-0zX"/>
+                                    <segue destination="Pu1-Qx-LwW" kind="show" identifier="showRestaurantDetail" id="Khe-fT-KqI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -82,8 +83,87 @@
                             <outlet property="delegate" destination="nU7-M4-9sT" id="x9u-DW-Fz8"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Food Pin" id="l2X-Gt-puc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lQ-UX-VcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752.79999999999995" y="100.29985007496252"/>
+        </scene>
+        <!--Restaurant Detail View Controller-->
+        <scene sceneID="zau-h5-3Mc">
+            <objects>
+                <viewController id="Pu1-Qx-LwW" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tCs-xe-K6G"/>
+                        <viewControllerLayoutGuide type="bottom" id="dbX-bV-E6A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m67-vk-Uwd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wv0-HH-oEe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gep-s6-Whh">
+                                <rect key="frame" x="156" y="300" width="62" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gep-CL-iIz">
+                                        <rect key="frame" x="2" y="0.0" width="58.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6r-mN-5Kj">
+                                        <rect key="frame" x="15" y="28.5" width="32" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKh-kN-AB5">
+                                        <rect key="frame" x="0.0" y="47.5" width="62" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wv0-HH-oEe" firstAttribute="top" secondItem="m67-vk-Uwd" secondAttribute="top" id="WZt-q6-57d"/>
+                            <constraint firstItem="wv0-HH-oEe" firstAttribute="leading" secondItem="m67-vk-Uwd" secondAttribute="leading" id="ZNn-EX-3PN"/>
+                            <constraint firstItem="gep-s6-Whh" firstAttribute="centerX" secondItem="m67-vk-Uwd" secondAttribute="centerX" id="ebv-f2-Sap"/>
+                            <constraint firstItem="dbX-bV-E6A" firstAttribute="top" secondItem="wv0-HH-oEe" secondAttribute="bottom" id="l5W-ah-o0S"/>
+                            <constraint firstAttribute="trailing" secondItem="wv0-HH-oEe" secondAttribute="trailing" id="osb-2F-SYp"/>
+                            <constraint firstItem="gep-s6-Whh" firstAttribute="centerY" secondItem="m67-vk-Uwd" secondAttribute="centerY" id="pZw-NF-yaJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="restaurantImageView" destination="wv0-HH-oEe" id="bI2-Oy-57z"/>
+                        <outlet property="restaurantLocationLabel" destination="zKh-kN-AB5" id="7QM-EU-SyG"/>
+                        <outlet property="restaurantNameLabel" destination="Gep-CL-iIz" id="wn6-pZ-tq2"/>
+                        <outlet property="restaurantTypeLabel" destination="F6r-mN-5Kj" id="hPL-02-kL1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tA-KU-4f6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="98.50074962518741"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8fo-nm-2Yr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gSc-PB-f1B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Rp-8L-sEK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nU7-M4-9sT" kind="relationship" relationship="rootViewController" id="fr6-aH-hbA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecx-oO-iow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-186.40000000000001" y="100.29985007496252"/>
         </scene>
