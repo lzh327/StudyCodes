@@ -21,27 +21,27 @@ class RestaurantTableViewController: UITableViewController {
 //    var restaurantIsVisited = Array(repeating: false, count: 21)
     
     var restaurants:[Restaurant] = [
-        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg"),
-        Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg"),
-        Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg"),
-        Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg"),
-        Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong", image: "petiteoyster.jpg"),
-        Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", image: "forkeerestaurant.jpg"),
-        Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", image: "posatelier.jpg"),
-        Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", image: "bourkestreetbakery.jpg"),
-        Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", image: "haighschocolate.jpg"),
-        Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", image: "palominoespresso.jpg"),
-        Restaurant(name: "Upstate", type: "American", location: "New York", image: "upstate.jpg"),
-        Restaurant(name: "Traif", type: "American", location: "New York", image: "traif.jpg"),
-        Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", image: "grahamavenuemeats.jpg"),
-        Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", image: "wafflewolf.jpg"),
-        Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York", image: "fiveleaves.jpg"),
-        Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York", image: "cafelore.jpg"),
-        Restaurant(name: "Confessional", type: "Spanish", location: "New York", image: "confessional.jpg"),
-        Restaurant(name: "Barrafina", type: "Spanish", location: "London", image: "barrafina.jpg"),
-        Restaurant(name: "Donostia", type: "Spanish", location: "London", image: "donostia.jpg"),
-        Restaurant(name: "Royal Oak", type: "British", location: "London", image: "royaloak.jpg"),
-        Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", image: "caskpubkitchen.jpg")
+        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", phone: "232-923423", image: "cafedeadend.jpg"),
+        Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", phone: "348-233423", image: "homei.jpg"),
+        Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", phone: "354-243523", image: "teakha.jpg"),
+        Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", phone: "453-333423", image: "cafeloisl.jpg"),
+        Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong", phone: "983-284334", image: "petiteoyster.jpg"),
+        Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", phone: "232-434222", image: "forkeerestaurant.jpg"),
+        Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", phone: "234-834322", image: "posatelier.jpg"),
+        Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", phone: "232-925523", image: "bourkestreetbakery.jpg"),
+        Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", phone: "256-334423", image: "haighschocolate.jpg"),
+        Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", phone: "282-667723", image: "palominoespresso.jpg"),
+        Restaurant(name: "Upstate", type: "American", location: "New York", phone: "567-115876", image: "upstate.jpg"),
+        Restaurant(name: "Traif", type: "American", location: "New York", phone: "902-123453", image: "traif.jpg"),
+        Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", phone: "092-923423", image: "grahamavenuemeats.jpg"),
+        Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", phone: "232-009223", image: "wafflewolf.jpg"),
+        Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York", phone: "672-925587", image: "fiveleaves.jpg"),
+        Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York", phone: "327-921123", image: "cafelore.jpg"),
+        Restaurant(name: "Confessional", type: "Spanish", location: "New York", phone: "543-920099", image: "confessional.jpg"),
+        Restaurant(name: "Barrafina", type: "Spanish", location: "London", phone: "232-910293", image: "barrafina.jpg"),
+        Restaurant(name: "Donostia", type: "Spanish", location: "London", phone: "232-920203", image: "donostia.jpg"),
+        Restaurant(name: "Royal Oak", type: "British", location: "London", phone: "662-198033", image: "royaloak.jpg"),
+        Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", phone: "232-120304", image: "caskpubkitchen.jpg")
         ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,21 @@ class RestaurantTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Remove the back button title in navigation bar
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //viewDidLoad method only run one time
+        //navigationController?.hidesBarsOnSwipe = true
+        
+    }
+    
+    //viewWillAppear method would be called every time the view will appear
+    //Hide the navigation bar on swipe
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.hidesBarsOnSwipe = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,9 +73,18 @@ class RestaurantTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
+    
+    // You are allow to control the style of status bar in any view controller.
+    // Or you could set it through the statusBarStyle property of UIApplication, this lets you change the style of status bar for the entire app.
+    // You may add UIApplication.shared.statusBarStyle = .lightContent in app delegate, but before that, you need to set info.list to change the dafault behavor for xcode.
+    // By default, the xcode is enabled to use "View controller-based status bar appearance", this means you can control the appearance of the status bar per view controller. in info.plist, add a new key, named "View controller-based status bar appearance" and set it to NO, now, we could change the status bar style by UIApplication.shared.statusBarStyle = .lightContent in app delegate
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
+    
 
     // MARK: - Table view data source
 

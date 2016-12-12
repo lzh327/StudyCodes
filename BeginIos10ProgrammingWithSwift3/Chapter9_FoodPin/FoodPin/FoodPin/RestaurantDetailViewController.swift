@@ -18,10 +18,24 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         self.tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
+        // Display the restaurant name in the navigation bar
+        self.title = restaurant.name
+        
+        //viewDidLoad method only run one time
+        //navigationController?.hidesBarsOnSwipe = false
+    }
+    
+    //viewWillAppear method would be called every time the view will appear
+    //Unhide the navigation bar on swipe and show it
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,6 +53,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             cell.fieldLabel.text = "Location"
             cell.valueLabel.text = self.restaurant.location
         case 3:
+            cell.fieldLabel.text = "Phone"
+            cell.valueLabel.text = self.restaurant.phone
+        case 4:
             cell.fieldLabel.text = "Been here"
             cell.valueLabel.text = (self.restaurant.isVisited) ? "Yes, I have been here before" : "No"
         default:
