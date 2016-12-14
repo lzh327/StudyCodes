@@ -9,40 +9,41 @@
 import UIKit
 
 class RestaurantTableViewController: UITableViewController {
-
-//    var restaurantNames = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
-//    
-//    var restaurantImages = ["cafedeadend.jpg", "homei.jpg", "teakha.jpg", "cafeloisl.jpg", "petiteoyster.jpg", "forkeerestaurant.jpg", "posatelier.jpg", "bourkestreetbakery.jpg", "haighschocolate.jpg", "palominoespresso.jpg", "upstate.jpg", "traif.jpg", "grahamavenuemeats.jpg", "wafflewolf.jpg", "fiveleaves.jpg", "cafelore.jpg", "confessional.jpg", "barrafina.jpg", "donostia.jpg", "royaloak.jpg", "caskpubkitchen.jpg"]
-//    
-//    var restaurantLocations = ["HongKong", "HongKong", "HongKong", "HongKong", "HongKong", "HongKong", "HongKong", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
-//    
-//    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
-//    
-//    var restaurantIsVisited = Array(repeating: false, count: 21)
     
     var restaurants:[Restaurant] = [
-        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", phone: "232-923423", image: "cafedeadend.jpg"),
-        Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", phone: "348-233423", image: "homei.jpg"),
-        Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", phone: "354-243523", image: "teakha.jpg"),
-        Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", phone: "453-333423", image: "cafeloisl.jpg"),
-        Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong", phone: "983-284334", image: "petiteoyster.jpg"),
-        Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", phone: "232-434222", image: "forkeerestaurant.jpg"),
-        Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", phone: "234-834322", image: "posatelier.jpg"),
-        Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", phone: "232-925523", image: "bourkestreetbakery.jpg"),
-        Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", phone: "256-334423", image: "haighschocolate.jpg"),
-        Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", phone: "282-667723", image: "palominoespresso.jpg"),
-        Restaurant(name: "Upstate", type: "American", location: "New York", phone: "567-115876", image: "upstate.jpg"),
-        Restaurant(name: "Traif", type: "American", location: "New York", phone: "902-123453", image: "traif.jpg"),
-        Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", phone: "092-923423", image: "grahamavenuemeats.jpg"),
-        Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", phone: "232-009223", image: "wafflewolf.jpg"),
-        Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York", phone: "672-925587", image: "fiveleaves.jpg"),
-        Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York", phone: "327-921123", image: "cafelore.jpg"),
-        Restaurant(name: "Confessional", type: "Spanish", location: "New York", phone: "543-920099", image: "confessional.jpg"),
-        Restaurant(name: "Barrafina", type: "Spanish", location: "London", phone: "232-910293", image: "barrafina.jpg"),
-        Restaurant(name: "Donostia", type: "Spanish", location: "London", phone: "232-920203", image: "donostia.jpg"),
-        Restaurant(name: "Royal Oak", type: "British", location: "London", phone: "662-198033", image: "royaloak.jpg"),
-        Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", phone: "232-120304", image: "caskpubkitchen.jpg")
+            Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "232-923423", image: "cafedeadend.jpg"),
+            Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phone: "348-233423", image:
+                "homei.jpg"),
+            Restaurant(name: "Teakha", type: "Tea House", location: "Shop B, 18 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phone: "354-243523", image:
+                "teakha.jpg"),
+            Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Shop B, 20 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phone: "453-333423", image: "cafeloisl.jpg"),
+            Restaurant(name: "Petite Oyster", type: "French", location: "24 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phone: "983-284334", image:
+                    "petiteoyster.jpg"),
+            Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Shop JK., 200 Hollywood Road, SOHO, Sheung Wan, Hong Kong", phone: "232-434222",
+                    image: "forkeerestaurant.jpg"),
+            Restaurant(name: "Po's Atelier", type: "Bakery", location: "G/F, 62 Po Hing Fong, Sheung Wan, Hong Kong", phone: "234-834322", image: "posatelier.jpg"),
+            Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "633 Bourke St Sydney New South Wales 2010 Surry Hills", phone: "982-434343", image:
+                    "bourkestreetbakery.jpg"),
+            Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "412-414 George St Sydney New South Wales", phone: "734-232323", image:
+                    "haighschocolate.jpg"),
+            Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Shop 1 61 York St Sydney New South Wales", phone: "872-734343", image:
+                    "palominoespresso.jpg"),
+            Restaurant(name: "Upstate", type: "American", location: "95 1st Ave New York, NY 10003", phone: "343-233221", image: "upstate.jpg"),
+            Restaurant(name: "Traif", type: "American", location: "229 S 4th St Brooklyn, NY 11211", phone: "985-723623", image: "traif.jpg"),
+            Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "445 Graham Ave Brooklyn, NY 11211", phone: "455-232345", image:
+                        "grahamavenuemeats.jpg"),
+            Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "413 Graham Ave Brooklyn, NY 11211", phone: "434-232322", image: "wafflewolf.jpg"),
+            Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "18 Bedford Ave Brooklyn, NY 11222", phone: "343-234553", image: "fiveleaves.jpg"),
+            Restaurant(name: "Cafe Lore", type: "Latin American", location: "Sunset Park 4601 4th Ave Brooklyn, NY 11220", phone: "342-455433", image:
+                        "cafelore.jpg"),
+            Restaurant(name: "Confessional", type: "Spanish", location: "308 E 6th St New York, NY 10003", phone: "643-332323", image: "confessional.jpg"),
+            Restaurant(name: "Barrafina", type: "Spanish", location: "54 Frith Street London W1D 4SL United Kingdom", phone: "542-343434", image: "barrafina.jpg"),
+            Restaurant(name: "Donostia", type: "Spanish", location: "10 Seymour Place London W1H 7ND United Kingdom", phone: "722-232323", image: "donostia.jpg"),
+            Restaurant(name: "Royal Oak", type: "British", location: "2 Regency Street London SW1P 4BZ United Kingdom", phone: "343-988834", image: "royaloak.jpg"),
+            Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", phone: "432-344050", image:
+                        "caskpubkitchen.jpg")
         ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +55,10 @@ class RestaurantTableViewController: UITableViewController {
         
         // Remove the back button title in navigation bar
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //Set up self sizing cell
+        self.tableView.estimatedRowHeight = 36.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //viewDidLoad method only run one time
         //navigationController?.hidesBarsOnSwipe = true

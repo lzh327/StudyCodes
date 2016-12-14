@@ -21,6 +21,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         // Display the restaurant name in the navigation bar
         self.title = restaurant.name
         
+        //Set up self sizing cell
+        self.tableView.estimatedRowHeight = 36.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         //viewDidLoad method only run one time
         //navigationController?.hidesBarsOnSwipe = false
     }
