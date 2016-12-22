@@ -38,6 +38,31 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    //Use for unwind segue, when connect in the Interface Builder, this function displayed as closeWithSegue
+    @IBAction func close(segue: UIStoryboardSegue) {
+        //print("The close function has been called!")
+    }
+    
+    //Use for unwind segue, when connect in the Interface Builder, this function displayed as ratingButtonTappedWithSegue
+    @IBAction func ratingButtonTapped(segue: UIStoryboardSegue) {
+        if let rating = segue.identifier {
+            self.restaurant.isVisited = true
+            
+            switch rating {
+            case "great":
+                self.restaurant.rating = "Absolutely love it! Must try."
+            case "good":
+                self.restaurant.rating = "Pretty good."
+            case "dislike":
+                self.restaurant.rating = "I don't like it."
+            default:
+                break
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -61,7 +86,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             cell.valueLabel.text = self.restaurant.phone
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (self.restaurant.isVisited) ? "Yes, I have been here before" : "No"
+            cell.valueLabel.text = (self.restaurant.isVisited) ? "Yes, I have been here before. \(self.restaurant.rating)" : "No"
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
@@ -69,5 +94,12 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         cell.backgroundColor = UIColor.clear
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showReview" {
+            let destinationController = segue.destination as! ReviewViewController
+            destinationController.restaurant = self.restaurant
+        }
     }
 }
