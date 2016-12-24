@@ -109,12 +109,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <mapView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" id="XVC-lD-sB2">
+                                    <rect key="frame" x="0.0" y="364" width="375" height="135"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </mapView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="36" id="0gO-sV-QuG" customClass="RestaurantDetailTableViewCell" customModule="FoodPin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0gO-sV-QuG" id="ccO-Nu-pvI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGf-lE-Hue">
@@ -181,13 +185,47 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="XVC-lD-sB2" id="7PM-wW-KCL"/>
                         <outlet property="restaurantImageView" destination="feY-XB-yhU" id="nj0-uh-Mth"/>
                         <outlet property="tableView" destination="7Bk-Dy-J63" id="LYQ-cH-Bu4"/>
+                        <segue destination="0J7-4j-Ckn" kind="show" identifier="showMap" id="2Qo-Vy-eee"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tA-KU-4f6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1548" y="98.50074962518741"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="IVs-uX-5lT">
+            <objects>
+                <viewController id="0J7-4j-Ckn" customClass="MapViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xxx-om-doy"/>
+                        <viewControllerLayoutGuide type="bottom" id="GU6-Ta-qA5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CMC-zJ-6bv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EWG-5i-0ep">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EWG-5i-0ep" firstAttribute="leading" secondItem="CMC-zJ-6bv" secondAttribute="leading" id="4hz-Vg-FUW"/>
+                            <constraint firstItem="GU6-Ta-qA5" firstAttribute="top" secondItem="EWG-5i-0ep" secondAttribute="bottom" id="59F-UD-RrS"/>
+                            <constraint firstItem="EWG-5i-0ep" firstAttribute="top" secondItem="CMC-zJ-6bv" secondAttribute="top" id="gKa-YM-R8X"/>
+                            <constraint firstAttribute="trailing" secondItem="EWG-5i-0ep" secondAttribute="trailing" id="sYv-oV-6SB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="EWG-5i-0ep" id="89K-fE-Aa6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVN-GT-nLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1543.2" y="798.35082458770626"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="mtx-Y2-751">
@@ -229,7 +267,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Absolutely love it!"/>
                                                 <connections>
-                                                    <segue destination="XSe-gF-nUK" kind="unwind" identifier="grate" unwindAction="ratingButtonTappedWithSegue:" id="fXQ-Cx-kGG"/>
+                                                    <segue destination="XSe-gF-nUK" kind="unwind" identifier="great" unwindAction="ratingButtonTappedWithSegue:" id="fXQ-Cx-kGG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DE-au-emv">

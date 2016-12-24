@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import MapKit
 
 class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var mapView: MKMapView!
+    
     var restaurant: Restaurant!
     
     override func viewDidLoad() {
         self.restaurantImageView.image = UIImage(named: self.restaurant.image)
         self.tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        //self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
         // Display the restaurant name in the navigation bar
         self.title = restaurant.name
@@ -27,6 +30,40 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         //viewDidLoad method only run one time
         //navigationController?.hidesBarsOnSwipe = false
+        
+        //Add a tap gesture and attach it to the map view, this will implement tapping the map to show the map view controller
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showMap))
+        mapView.addGestureRecognizer(tapGestureRecognizer)
+        
+        //Converting an address into coordinates using Geocoder and adding an annotation to the map
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            if let placemarks = placemarks {
+                //Get the first placemark
+                let placemark = placemarks[0]
+                
+                //Add annotation
+                let annotation = MKPointAnnotation()
+                
+                if let location = placemark.location {
+                    //Display the annotation
+                    annotation.coordinate = location.coordinate
+                    self.mapView.addAnnotation(annotation)
+                    
+                    //Set the zoom level
+                    let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 250, 250)
+                    self.mapView.setRegion(region, animated: false)
+                }
+            }
+            
+        })
+        
+        
     }
     
     //viewWillAppear method would be called every time the view will appear
@@ -100,6 +137,13 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         if segue.identifier == "showReview" {
             let destinationController = segue.destination as! ReviewViewController
             destinationController.restaurant = self.restaurant
+        } else if segue.identifier == "showMap" {
+            let destinationController = segue.destination as! MapViewController
+            destinationController.restaurant = self.restaurant
         }
+    }
+    
+    func showMap() {
+        performSegue(withIdentifier: "showMap", sender: self)
     }
 }
