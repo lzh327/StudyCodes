@@ -14,10 +14,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     
-    var restaurant: Restaurant!
+    var restaurant: RestaurantMO!
     
     override func viewDidLoad() {
-        self.restaurantImageView.image = UIImage(named: self.restaurant.image)
+        self.restaurantImageView.image = UIImage(data: self.restaurant.image as! Data)
         self.tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
         //self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
@@ -37,7 +37,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         //Converting an address into coordinates using Geocoder and adding an annotation to the map
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
+        geoCoder.geocodeAddressString(restaurant.location!, completionHandler: { placemarks, error in
             if error != nil {
                 print(error!)
                 return
@@ -95,6 +95,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             default:
                 break
             }
+        }
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            appDelegate.saveContext()
         }
         
         self.tableView.reloadData()
