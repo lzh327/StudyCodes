@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
 //    var restaurants:[Restaurant] = [
 //            Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "232-923423", image: "cafedeadend.jpg"),
@@ -47,6 +47,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     var restaurants: [RestaurantMO] = []
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
+    var searchController: UISearchController!
+    var searchResults: [RestaurantMO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +89,16 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             }
         }
         
+        //Create a search bar
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        
+        self.searchController.searchBar.placeholder = "Search restaurants..."
+        self.searchController.searchBar.tintColor = UIColor.white
+        self.searchController.searchBar.barTintColor = UIColor(red: 218.0/255.0, green: 100.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+        
     }
     
     //viewWillAppear method would be called every time the view will appear
@@ -122,26 +134,33 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+        if self.searchController.isActive {
+            return searchResults.count
+        } else {
+            return restaurants.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
+        
+        //Determine if we get the restaurant from search result or the original array
+        let restaurant = (self.searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
 
         // Configure the cell...
 //        cell.textLabel?.text = restaurantNames[indexPath.row]
 //        cell.imageView?.image = UIImage(named: restaurantImages[indexPath.row])
         
-        cell.nameLabel.text = restaurants[indexPath.row].name
-        cell.thumbnailImageView.image = UIImage(data: restaurants[indexPath.row].image as! Data)
-        cell.locationLabel.text = restaurants[indexPath.row].location
-        cell.typeLabel.text = restaurants[indexPath.row].type
+        cell.nameLabel.text = restaurant.name
+        cell.thumbnailImageView.image = UIImage(data: restaurant.image as! Data)
+        cell.locationLabel.text = restaurant.location
+        cell.typeLabel.text = restaurant.type
         
 //        cell.cellSet(name: restaurants[indexPath.row].name, location: restaurants[indexPath.row].location, type: restaurants[indexPath.row].type, thumbnail: restaurants[indexPath.row].image)
         
-        if restaurants[indexPath.row].isVisited {
+        if restaurant.isVisited {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -213,6 +232,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
 //        }
 //    }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if self.searchController.isActive {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Social Sharing Button
         let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: {(action, indexPath) -> Void in
@@ -249,7 +276,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! RestaurantDetailViewController
-                destinationController.restaurant = restaurants[indexPath.row]
+                //destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
                 
                 //In this place, I first use the following code:
                 ////destinationController.restaurantNameLabel.text = restaurantNames[indexPath.row]
@@ -300,6 +328,26 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
+    }
+    
+    // MARK: - Method for deal with search
+    //Logic for search
+    func filterContent(for searchText: String) {
+        self.searchResults = restaurants.filter({ (restaurant) -> Bool in
+            if let name = restaurant.name, let location = restaurant.location {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            return false
+        })
+    }
+    
+    //The method for UISearchResultsUpdating protocol. When a user selects the search bar or key in a search keyword, the method will be called
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = self.searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
     }
  
 
