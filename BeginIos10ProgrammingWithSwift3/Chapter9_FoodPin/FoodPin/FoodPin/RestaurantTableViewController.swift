@@ -108,6 +108,19 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         navigationController?.hidesBarsOnSwipe = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
+            return
+        }
+        
+        //Present the walkthrough screen
+        if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughController") as? WalkthroughPageViewController {
+            self.present(pageViewController, animated: true, completion: nil)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

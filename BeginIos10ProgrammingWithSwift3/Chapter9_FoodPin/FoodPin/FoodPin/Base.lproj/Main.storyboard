@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -611,6 +612,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecx-oO-iow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-186.40000000000001" y="100.29985007496252"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="DAl-Yj-MFH">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Enc-VD-7uI" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7EL-ne-e3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-970" y="920"/>
+        </scene>
+        <!--Walkthrough Content View Controller-->
+        <scene sceneID="E88-ej-JhG">
+            <objects>
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="6ks-3S-jQ0" customClass="WalkthroughContentViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6be-4Z-vcI"/>
+                        <viewControllerLayoutGuide type="bottom" id="tVf-mt-O41"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Sl-c9-hsG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personalize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLe-Nw-h7s">
+                                <rect key="frame" x="126.5" y="28" width="122" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-wm-0ll">
+                                <rect key="frame" x="37" y="65" width="300" height="232"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WB9-wm-0ll" secondAttribute="height" multiplier="75:58" id="6Ak-hL-wYs"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin your favorite restaurant and create your own food guide" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nD2-KN-xiR">
+                                <rect key="frame" x="46" y="305" width="282" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="bp0-0P-X9i"/>
+                                    <constraint firstAttribute="width" constant="282" id="j65-HA-nbS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lYP-8J-KEN">
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xif-Qq-31i">
+                                <rect key="frame" x="320" y="613" width="39" height="30"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="6ks-3S-jQ0" eventType="touchUpInside" id="MCz-uq-Jk1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tVf-mt-O41" firstAttribute="top" secondItem="lYP-8J-KEN" secondAttribute="bottom" constant="20" id="1bv-Ss-M6H"/>
+                            <constraint firstItem="tVf-mt-O41" firstAttribute="top" secondItem="Xif-Qq-31i" secondAttribute="bottom" constant="24" id="C2r-dY-CCe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WB9-wm-0ll" secondAttribute="trailing" constant="22" id="Cq2-Go-h8v"/>
+                            <constraint firstItem="nD2-KN-xiR" firstAttribute="centerX" secondItem="3Sl-c9-hsG" secondAttribute="centerX" id="G4H-3E-N8d"/>
+                            <constraint firstItem="Xif-Qq-31i" firstAttribute="trailing" secondItem="3Sl-c9-hsG" secondAttribute="trailingMargin" id="eCb-29-Z8f"/>
+                            <constraint firstItem="CLe-Nw-h7s" firstAttribute="top" secondItem="6be-4Z-vcI" secondAttribute="bottom" constant="8" id="gZd-SR-hKA"/>
+                            <constraint firstItem="lYP-8J-KEN" firstAttribute="centerX" secondItem="3Sl-c9-hsG" secondAttribute="centerX" id="hTa-sq-H62"/>
+                            <constraint firstItem="WB9-wm-0ll" firstAttribute="leading" secondItem="3Sl-c9-hsG" secondAttribute="leadingMargin" constant="21" id="s3F-Kz-5eI"/>
+                            <constraint firstItem="nD2-KN-xiR" firstAttribute="top" secondItem="WB9-wm-0ll" secondAttribute="bottom" constant="8" id="vxb-V4-MqN"/>
+                            <constraint firstItem="CLe-Nw-h7s" firstAttribute="centerX" secondItem="3Sl-c9-hsG" secondAttribute="centerX" id="xEl-BF-oI0"/>
+                            <constraint firstItem="WB9-wm-0ll" firstAttribute="top" secondItem="CLe-Nw-h7s" secondAttribute="bottom" constant="8" id="ynr-sV-gjS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="WB9-wm-0ll" id="ijy-qi-YZo"/>
+                        <outlet property="contentLabel" destination="nD2-KN-xiR" id="vHb-4y-j48"/>
+                        <outlet property="forwardButton" destination="Xif-Qq-31i" id="FDA-bD-uWT"/>
+                        <outlet property="headingLabel" destination="CLe-Nw-h7s" id="VsO-ke-7Dr"/>
+                        <outlet property="pageControl" destination="lYP-8J-KEN" id="26p-SD-gcu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vfz-rk-PEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-124" y="917.99100449775119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HF4-D8-AMU">
