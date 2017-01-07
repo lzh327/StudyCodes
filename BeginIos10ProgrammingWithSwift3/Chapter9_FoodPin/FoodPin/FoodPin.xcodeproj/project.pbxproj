@@ -12,6 +12,7 @@
 		B707E9CD1DEE97530044FCD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B707E9CC1DEE97530044FCD0 /* Assets.xcassets */; };
 		B707E9D01DEE97530044FCD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B707E9CE1DEE97530044FCD0 /* LaunchScreen.storyboard */; };
 		B707E9D81DEE9A860044FCD0 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B707E9D71DEE9A860044FCD0 /* RestaurantTableViewController.swift */; };
+		B72CF3591E212BE80082DAC6 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CF3581E212BE80082DAC6 /* AboutTableViewController.swift */; };
 		B737814D1E122BB6005F34CD /* AddRestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B737814C1E122BB6005F34CD /* AddRestaurantController.swift */; };
 		B7384AEA1E1FE6C200FC53FC /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7384AE81E1FE6C200FC53FC /* About.storyboard */; };
 		B7384AEC1E1FE70B00FC53FC /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7384AEB1E1FE70B00FC53FC /* Discover.storyboard */; };
@@ -35,6 +36,7 @@
 		B707E9CF1DEE97530044FCD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B707E9D11DEE97530044FCD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B707E9D71DEE9A860044FCD0 /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
+		B72CF3581E212BE80082DAC6 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		B737814C1E122BB6005F34CD /* AddRestaurantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantController.swift; sourceTree = "<group>"; };
 		B7384AE91E1FE6C200FC53FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		B7384AEB1E1FE70B00FC53FC /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				B79B7C3C1E13F482002609B4 /* FoodPin.xcdatamodeld */,
 				B7A3A6111E17D8CC0007BD39 /* WalkthroughContentViewController.swift */,
 				B7A3A6131E17DF980007BD39 /* WalkthroughPageViewController.swift */,
+				B72CF3581E212BE80082DAC6 /* AboutTableViewController.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B737814D1E122BB6005F34CD /* AddRestaurantController.swift in Sources */,
+				B72CF3591E212BE80082DAC6 /* AboutTableViewController.swift in Sources */,
 				B74524EC1DFE76860003D2A0 /* Restaurant.swift in Sources */,
 				B707E9D81DEE9A860044FCD0 /* RestaurantTableViewController.swift in Sources */,
 				B742A9171E0BCAD200B24CC1 /* ReviewViewController.swift in Sources */,
