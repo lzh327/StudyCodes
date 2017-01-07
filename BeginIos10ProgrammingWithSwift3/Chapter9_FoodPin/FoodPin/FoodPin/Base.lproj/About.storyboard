@@ -46,10 +46,31 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="h4h-b5-J4l"/>
+                    <connections>
+                        <segue destination="ypC-pJ-EvZ" kind="show" identifier="showWebView" id="2L8-5O-WJA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqB-KK-2Eg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1692" y="1533"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="dkH-6H-Hik">
+            <objects>
+                <viewController id="ypC-pJ-EvZ" customClass="WebViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oqs-be-I8A"/>
+                        <viewControllerLayoutGuide type="bottom" id="S96-Ae-yV9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YKH-Hk-VQm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q7L-3b-zmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2486" y="1532"/>
         </scene>
         <!--About-->
         <scene sceneID="rX8-Id-617">
