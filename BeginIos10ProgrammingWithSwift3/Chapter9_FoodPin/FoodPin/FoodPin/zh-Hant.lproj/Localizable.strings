@@ -1,0 +1,84 @@
+/* Great Field */
+"Absolutely love it! Must try." = "非常喜歡，一定再來";
+
+/* Have you been here Field */
+"Been here" = "來過這裡嗎";
+
+/* DONE Field */
+"DONE" = "完成";
+
+/* Delete Field */
+"Delete" = "刪除";
+
+/* Discover Field */
+"Discover" = "發掘";
+
+/* Discover discriptive Field */
+"Find restaurants pinned by your friends and other foodies around the world" = "找到你身邊的朋友或者來自全球的美食家推薦的餐廳";
+
+/* Follow Us Field */
+"Follow Us" = "聯繫我們";
+
+/* Dislike Field */
+"I don't like it." = "我不喜歡";
+
+/* Just checking in Field */
+"Just checking in at " = "我剛剛來過";
+
+/* Leave Feedback Field */
+"Leave Feedback" = "給我們反饋";
+
+/* Locate Field */
+"Locate" = "定位";
+
+/* Location/Address Field */
+"Location" = "地址";
+
+/* NEXT Field */
+"NEXT" = "下一步";
+
+/* Name Field */
+"Name" = "名稱";
+
+/* No, I haven't been here */
+"No" = "不，我沒有來過這裡";
+
+/* OOPS Field */
+"OOPS" = "錯誤";
+
+/* Personalize Field */
+"Personalize" = "個性化";
+
+/* Phone Field */
+"Phone" = "電話";
+
+/* Personalize discriptive Field */
+"Pin your favorite restaurants and create your own food guide" = "記錄自己的餐廳，打造屬於自己的飲食指南";
+
+/* Good Field */
+"Pretty good." = "還不錯";
+
+/* Rate us on App Store Field */
+"Rate us on App Store" = "給我們評價";
+
+/* Locate discriptive Field */
+"Search and locate your favourite restaurant on Maps" = "搜尋并定位你最喜愛的餐廳";
+
+/* Search restaurants Field */
+"Search restaurants..." = "搜尋餐廳";
+
+/* Share Field */
+"Share" = "分享";
+
+/* Tell us your feedback Field */
+"Tell us your feedback" = "給我們一點建議";
+
+/* Type Field */
+"Type" = "類型";
+
+/* Warnning Field */
+"We can't proceed because one of the field is blank. Please note that all field are required." = "無法繼續，請注意所有欄目都需要填寫";
+
+/* Yes, I have been here before */
+"Yes, I have been here before. (self.restaurant.rating)" = "是的，我來過這裡。 (self.restaurant.rating)";
+

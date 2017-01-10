@@ -42,8 +42,8 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
     @IBAction func save(_ sender: UIBarButtonItem) {
         print("Save button has been tapped!")
         if self.nameTextField.text == "" || self.typeTextField.text == "" || self.locationTextField.text == "" {
-            let alert = UIAlertController(title: "OOPS", message: "We can't proceed because one of the field is blank. Please note that all field are required.", preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: NSLocalizedString("OOPS", comment: "OOPS Field"), message: NSLocalizedString("We can't proceed because one of the field is blank. Please note that all field are required.", comment: "Warnning Field"), preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK Field"), style: .cancel, handler: nil)
             alert.addAction(OKAction)
             self.present(alert, animated: true, completion: nil)
         } else {

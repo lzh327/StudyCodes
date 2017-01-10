@@ -95,7 +95,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         
-        self.searchController.searchBar.placeholder = "Search restaurants..."
+        self.searchController.searchBar.placeholder = NSLocalizedString("Search restaurants...", comment: "Search restaurants Field")
         self.searchController.searchBar.tintColor = UIColor.white
         self.searchController.searchBar.barTintColor = UIColor(red: 218.0/255.0, green: 100.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         
@@ -255,8 +255,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Social Sharing Button
-        let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: {(action, indexPath) -> Void in
-            let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name!
+        let shareAction = UITableViewRowAction(style: .default, title: NSLocalizedString("Share", comment: "Share Field"), handler: {(action, indexPath) -> Void in
+            let defaultText = NSLocalizedString("Just checking in at ", comment: "Just checking in Field") + self.restaurants[indexPath.row].name!
             
             if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image as! Data) {
             let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
@@ -266,7 +266,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             })
         
         //Delete button
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) -> Void in
+        let deleteAction = UITableViewRowAction(style: .default, title: NSLocalizedString("Delete", comment: "Delete Field"), handler: {(action, indexPath) -> Void in
             //Delete the row from the data source
 //            self.restaurants.remove(at: indexPath.row)
 //            self.tableView.deleteRows(at: [indexPath], with: .fade)

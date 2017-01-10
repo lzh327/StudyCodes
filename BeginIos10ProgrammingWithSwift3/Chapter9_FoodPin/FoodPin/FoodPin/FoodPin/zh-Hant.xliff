@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="FoodPin/Base.lproj/About.storyboard" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="BK2-rF-cSA.title">
+          <source>About</source>
+          <target>關於我們</target>
+        <note>Class = "UITabBarItem"; title = "About"; ObjectID = "BK2-rF-cSA";</note>
+      </trans-unit>
+      <trans-unit id="h4h-b5-J4l.title">
+          <source>About</source>
+          <target>關於我們</target>
+        <note>Class = "UINavigationItem"; title = "About"; ObjectID = "h4h-b5-J4l";</note>
+      </trans-unit>
+      <trans-unit id="nhz-2m-c6O.text">
+          <source>Title</source>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "nhz-2m-c6O";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="FoodPin/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body/>
+  </file>
+  <file original="FoodPin/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="0L0-j5-xdo.text">
+          <source>Location</source>
+          <target>地址</target>
+        <note>Class = "UILabel"; text = "Location"; ObjectID = "0L0-j5-xdo";</note>
+      </trans-unit>
+      <trans-unit id="4DE-au-emv.normalTitle">
+          <source>Good</source>
+          <target>還不錯，可以一試</target>
+        <note>Class = "UIButton"; normalTitle = "Good"; ObjectID = "4DE-au-emv";</note>
+      </trans-unit>
+      <trans-unit id="4Vj-wy-xXX.text">
+          <source>PHONE</source>
+          <target>電話</target>
+        <note>Class = "UILabel"; text = "PHONE"; ObjectID = "4Vj-wy-xXX";</note>
+      </trans-unit>
+      <trans-unit id="4m5-1p-Mc5.text">
+          <source>Name</source>
+          <target>名稱</target>
+        <note>Class = "UILabel"; text = "Name"; ObjectID = "4m5-1p-Mc5";</note>
+      </trans-unit>
+      <trans-unit id="5pg-MH-5t8.normalTitle">
+        <source>NO</source>
+        <note>Class = "UIButton"; normalTitle = "NO"; ObjectID = "5pg-MH-5t8";</note>
+      </trans-unit>
+      <trans-unit id="6sD-An-MwA.normalTitle">
+        <source>YES</source>
+        <note>Class = "UIButton"; normalTitle = "YES"; ObjectID = "6sD-An-MwA";</note>
+      </trans-unit>
+      <trans-unit id="13n-We-6Ta.title">
+          <source>Save</source>
+          <target>保存</target>
+        <note>Class = "UIBarButtonItem"; title = "Save"; ObjectID = "13n-We-6Ta";</note>
+      </trans-unit>
+      <trans-unit id="AFb-xB-mZS.text">
+          <source>You've dined here. What do you think?</source>
+          <target>你曾光顧這家店，給點評價吧</target>
+        <note>Class = "UILabel"; text = "You've dined here. What do you think?"; ObjectID = "AFb-xB-mZS";</note>
+      </trans-unit>
+      <trans-unit id="CLe-Nw-h7s.text">
+          <source>Personalize</source>
+          <target>個性化</target>
+        <note>Class = "UILabel"; text = "Personalize"; ObjectID = "CLe-Nw-h7s";</note>
+      </trans-unit>
+      <trans-unit id="M7p-Gc-AKZ.title">
+          <source>Item</source>
+          <target>項目</target>
+        <note>Class = "UITabBarItem"; title = "Item"; ObjectID = "M7p-Gc-AKZ";</note>
+      </trans-unit>
+      <trans-unit id="M26-JD-hEW.text">
+          <source>LOCATION</source>
+          <target>地址</target>
+        <note>Class = "UILabel"; text = "LOCATION"; ObjectID = "M26-JD-hEW";</note>
+      </trans-unit>
+      <trans-unit id="Mj9-s5-cfb.normalTitle">
+          <source>Absolutely love it!</source>
+          <target>非常喜歡，一定再來</target>
+        <note>Class = "UIButton"; normalTitle = "Absolutely love it!"; ObjectID = "Mj9-s5-cfb";</note>
+      </trans-unit>
+      <trans-unit id="O4p-xP-N4S.placeholder">
+          <source>Restautant Name</source>
+          <target>餐廳名稱</target>
+        <note>Class = "UITextField"; placeholder = "Restautant Name"; ObjectID = "O4p-xP-N4S";</note>
+      </trans-unit>
+      <trans-unit id="OdQ-q6-4A3.placeholder">
+          <source>Restaurant Phone</source>
+          <target>餐廳電話</target>
+        <note>Class = "UITextField"; placeholder = "Restaurant Phone"; ObjectID = "OdQ-q6-4A3";</note>
+      </trans-unit>
+      <trans-unit id="Pdx-uc-EyQ.placeholder">
+          <source>Restaurant Type</source>
+          <target>餐廳類型</target>
+        <note>Class = "UITextField"; placeholder = "Restaurant Type"; ObjectID = "Pdx-uc-EyQ";</note>
+      </trans-unit>
+      <trans-unit id="QDq-el-o4A.normalTitle">
+          <source>I don't like it</source>
+          <target>就是不喜歡</target>
+        <note>Class = "UIButton"; normalTitle = "I don't like it"; ObjectID = "QDq-el-o4A";</note>
+      </trans-unit>
+      <trans-unit id="RGj-5o-lpN.title">
+          <source>Item</source>
+          <target>項目</target>
+        <note>Class = "UITabBarItem"; title = "Item"; ObjectID = "RGj-5o-lpN";</note>
+      </trans-unit>
+      <trans-unit id="U65-Dk-eVb.title">
+          <source>New Restaurant</source>
+          <target>新增餐廳</target>
+        <note>Class = "UINavigationItem"; title = "New Restaurant"; ObjectID = "U65-Dk-eVb";</note>
+      </trans-unit>
+      <trans-unit id="WyX-BQ-lbv.text">
+        <source>Value</source>
+        <note>Class = "UILabel"; text = "Value"; ObjectID = "WyX-BQ-lbv";</note>
+      </trans-unit>
+      <trans-unit id="XcU-Ap-GCW.text">
+          <source>Have You Been Here</source>
+          <target>來過這裡嗎</target>
+        <note>Class = "UILabel"; text = "Have You Been Here"; ObjectID = "XcU-Ap-GCW";</note>
+      </trans-unit>
+      <trans-unit id="Xif-Qq-31i.normalTitle">
+          <source>NEXT</source>
+          <target>下一步</target>
+        <note>Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "Xif-Qq-31i";</note>
+      </trans-unit>
+      <trans-unit id="bZc-Ge-NH4.placeholder">
+          <source>Restaurant Location</source>
+          <target>餐廳地址</target>
+        <note>Class = "UITextField"; placeholder = "Restaurant Location"; ObjectID = "bZc-Ge-NH4";</note>
+      </trans-unit>
+      <trans-unit id="gB1-eH-h3j.text">
+          <source>NAME</source>
+          <target>名稱</target>
+        <note>Class = "UILabel"; text = "NAME"; ObjectID = "gB1-eH-h3j";</note>
+      </trans-unit>
+      <trans-unit id="kBL-YU-LxO.text">
+          <source>TYPE</source>
+          <target>類型</target>
+        <note>Class = "UILabel"; text = "TYPE"; ObjectID = "kBL-YU-LxO";</note>
+      </trans-unit>
+      <trans-unit id="l2X-Gt-puc.title">
+        <source>Food Pin</source>
+        <note>Class = "UINavigationItem"; title = "Food Pin"; ObjectID = "l2X-Gt-puc";</note>
+      </trans-unit>
+      <trans-unit id="llJ-Mz-3Qc.text">
+        <source>Field</source>
+        <note>Class = "UILabel"; text = "Field"; ObjectID = "llJ-Mz-3Qc";</note>
+      </trans-unit>
+      <trans-unit id="nD2-KN-xiR.text">
+          <source>Pin your favorite restaurant and create your own food guide</source>
+          <target>記錄自己喜歡的餐廳，打造屬於自己的飲食指南</target>
+        <note>Class = "UILabel"; text = "Pin your favorite restaurant and create your own food guide"; ObjectID = "nD2-KN-xiR";</note>
+      </trans-unit>
+      <trans-unit id="xLU-rm-vBb.title">
+          <source>Favorite</source>
+          <target>最愛</target>
+        <note>Class = "UITabBarItem"; title = "Favorite"; ObjectID = "xLU-rm-vBb";</note>
+      </trans-unit>
+      <trans-unit id="xzf-hh-emo.text">
+          <source>Type</source>
+          <target>類型</target>
+        <note>Class = "UILabel"; text = "Type"; ObjectID = "xzf-hh-emo";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="FoodPin/Info.plist" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="FoodPin/Localizable.strings" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="Absolutely love it! Must try.">
+          <source>Absolutely love it! Must try.</source>
+          <target>非常喜歡，一定再來</target>
+        <note>Great Field</note>
+      </trans-unit>
+      <trans-unit id="Been here">
+          <source>Been here</source>
+          <target>來過這裡嗎</target>
+        <note>Have you been here Field</note>
+      </trans-unit>
+      <trans-unit id="DONE">
+          <source>DONE</source>
+          <target>完成</target>
+        <note>DONE Field</note>
+      </trans-unit>
+      <trans-unit id="Delete">
+          <source>Delete</source>
+          <target>刪除</target>
+        <note>Delete Field</note>
+      </trans-unit>
+      <trans-unit id="Discover">
+          <source>Discover</source>
+          <target>發掘</target>
+        <note>Discover Field</note>
+      </trans-unit>
+      <trans-unit id="Find restaurants pinned by your friends and other foodies around the world">
+          <source>Find restaurants pinned by your friends and other foodies around the world</source>
+          <target>找到你身邊的朋友或者來自全球的美食家推薦的餐廳</target>
+        <note>Discover discriptive Field</note>
+      </trans-unit>
+      <trans-unit id="Follow Us">
+          <source>Follow Us</source>
+          <target>聯繫我們</target>
+        <note>Follow Us Field</note>
+      </trans-unit>
+      <trans-unit id="I don't like it.">
+          <source>I don't like it.</source>
+          <target>我不喜歡</target>
+        <note>Dislike Field</note>
+      </trans-unit>
+      <trans-unit id="Just checking in at ">
+          <source>Just checking in at </source>
+          <target>我剛剛來過</target>
+        <note>Just checking in Field</note>
+      </trans-unit>
+      <trans-unit id="Leave Feedback">
+          <source>Leave Feedback</source>
+          <target>給我們反饋</target>
+        <note>Leave Feedback Field</note>
+      </trans-unit>
+      <trans-unit id="Locate">
+          <source>Locate</source>
+          <target>定位</target>
+        <note>Locate Field</note>
+      </trans-unit>
+      <trans-unit id="Location">
+          <source>Location</source>
+          <target>地址</target>
+        <note>Location/Address Field</note>
+      </trans-unit>
+      <trans-unit id="NEXT">
+          <source>NEXT</source>
+          <target>下一步</target>
+        <note>NEXT Field</note>
+      </trans-unit>
+      <trans-unit id="Name">
+          <source>Name</source>
+          <target>名稱</target>
+        <note>Name Field</note>
+      </trans-unit>
+      <trans-unit id="No">
+        <source>No</source>
+        <note>No, I haven't been here</note>
+        <target>不，我沒有來過這裡</target>
+      </trans-unit>
+      <trans-unit id="OK">
+        <source>OK</source>
+        <note>OK Field</note>
+      </trans-unit>
+      <trans-unit id="OOPS">
+          <source>OOPS</source>
+          <target>錯誤</target>
+        <note>OOPS Field</note>
+      </trans-unit>
+      <trans-unit id="Personalize">
+          <source>Personalize</source>
+          <target>個性化</target>
+        <note>Personalize Field</note>
+      </trans-unit>
+      <trans-unit id="Phone">
+          <source>Phone</source>
+          <target>電話</target>
+        <note>Phone Field</note>
+      </trans-unit>
+      <trans-unit id="Pin your favorite restaurants and create your own food guide">
+          <source>Pin your favorite restaurants and create your own food guide</source>
+          <target>記錄自己的餐廳，打造屬於自己的飲食指南</target>
+        <note>Personalize discriptive Field</note>
+      </trans-unit>
+      <trans-unit id="Pretty good.">
+          <source>Pretty good.</source>
+          <target>還不錯</target>
+        <note>Good Field</note>
+      </trans-unit>
+      <trans-unit id="Rate us on App Store">
+          <source>Rate us on App Store</source>
+          <target>給我們評價</target>
+        <note>Rate us on App Store Field</note>
+      </trans-unit>
+      <trans-unit id="Search and locate your favourite restaurant on Maps">
+          <source>Search and locate your favourite restaurant on Maps</source>
+          <target>搜尋并定位你最喜愛的餐廳</target>
+        <note>Locate discriptive Field</note>
+      </trans-unit>
+      <trans-unit id="Search restaurants...">
+          <source>Search restaurants...</source>
+          <target>搜尋餐廳</target>
+        <note>Search restaurants Field</note>
+      </trans-unit>
+      <trans-unit id="Share">
+          <source>Share</source>
+          <target>分享</target>
+        <note>Share Field</note>
+      </trans-unit>
+      <trans-unit id="Tell us your feedback">
+          <source>Tell us your feedback</source>
+          <target>給我們一點建議</target>
+        <note>Tell us your feedback Field</note>
+      </trans-unit>
+      <trans-unit id="Type">
+          <source>Type</source>
+          <target>類型</target>
+        <note>Type Field</note>
+      </trans-unit>
+      <trans-unit id="We can't proceed because one of the field is blank. Please note that all field are required.">
+          <source>We can't proceed because one of the field is blank. Please note that all field are required.</source>
+          <target>無法繼續，請注意所有欄目都需要填寫</target>
+        <note>Warnning Field</note>
+      </trans-unit>
+      <trans-unit id="Yes, I have been here before. (self.restaurant.rating)">
+          <source>Yes, I have been here before. (self.restaurant.rating)</source>
+          <target>是的，我來過這裡。 (self.restaurant.rating)</target>
+        <note>Yes, I have been here before</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

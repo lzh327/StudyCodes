@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about-logo" id="sn6-bE-HiB">
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutfoodpin.png" id="sn6-bE-HiB">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -93,6 +93,6 @@
     </scenes>
     <resources>
         <image name="about" width="23" height="22"/>
-        <image name="about-logo" width="485" height="200"/>
+        <image name="aboutfoodpin.png" width="16" height="16"/>
     </resources>
 </document>

@@ -30,8 +30,8 @@ class WalkthroughContentViewController: UIViewController {
         pageControl.currentPage = index
         
         switch index {
-        case 0...1: forwardButton.setTitle("NEXT", for: .normal)
-        case 2: forwardButton.setTitle("DONE", for: .normal)
+        case 0...1: forwardButton.setTitle(NSLocalizedString("NEXT", comment: "NEXT Field"), for: .normal)
+        case 2: forwardButton.setTitle(NSLocalizedString("DONE", comment: "DONE Field"), for: .normal)
         default: break
         }
 

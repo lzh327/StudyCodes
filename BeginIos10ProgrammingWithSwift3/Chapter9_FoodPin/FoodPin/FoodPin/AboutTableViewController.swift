@@ -11,8 +11,8 @@ import SafariServices
 
 class AboutTableViewController: UITableViewController {
     
-    var sectionTitles = ["Leave Feedback", "Follow Us"]
-    var sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Twitter", "Facebook", "Pinterest"]]
+    var sectionTitles = [NSLocalizedString("Leave Feedback", comment: "Leave Feedback Field"), NSLocalizedString("Follow Us", comment: "Follow Us Field")]
+    var sectionContent = [[NSLocalizedString("Rate us on App Store", comment: "Rate us on App Store Field"), NSLocalizedString("Tell us your feedback", comment: "Tell us your feedback Field")], ["Twitter", "Facebook", "Pinterest"]]
     var links = ["https://twitter.com/appcodamobile", "https://facebook.com/appcodamobile", "https://www.pinterest.com/appcoda/"]
 
     override func viewDidLoad() {

@@ -23,6 +23,9 @@
 		B75909DF1E0E29E100370322 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B75909DE1E0E29E100370322 /* MapKit.framework */; };
 		B75909E11E0E416300370322 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75909E01E0E416300370322 /* MapViewController.swift */; };
 		B7624ACA1DEF0FCD00E0F78E /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7624AC91DEF0FCD00E0F78E /* RestaurantTableViewCell.swift */; };
+		B767D9E71E253822005E13B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B767D9E91E253822005E13B7 /* Localizable.strings */; };
+		B767D9EE1E253823005E13B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B767D9F01E253823005E13B7 /* InfoPlist.strings */; };
+		B767D9F91E253B3C005E13B7 /* aboutfoodpin.png in Resources */ = {isa = PBXBuildFile; fileRef = B767D9FB1E253B3C005E13B7 /* aboutfoodpin.png */; };
 		B79B7C3E1E13F482002609B4 /* FoodPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B79B7C3C1E13F482002609B4 /* FoodPin.xcdatamodeld */; };
 		B7A3A6121E17D8CC0007BD39 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3A6111E17D8CC0007BD39 /* WalkthroughContentViewController.swift */; };
 		B7A3A6141E17DF980007BD39 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3A6131E17DF980007BD39 /* WalkthroughPageViewController.swift */; };
@@ -48,6 +51,19 @@
 		B75909DE1E0E29E100370322 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B75909E01E0E416300370322 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B7624AC91DEF0FCD00E0F78E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		B767D9E41E25381F005E13B7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/About.strings"; sourceTree = "<group>"; };
+		B767D9E81E253822005E13B7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B767D9EA1E253822005E13B7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B767D9EB1E253822005E13B7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B767D9EF1E253823005E13B7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B767D9F11E253850005E13B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/About.strings"; sourceTree = "<group>"; };
+		B767D9F21E253850005E13B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B767D9F31E253851005E13B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		B767D9F41E253851005E13B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B767D9F51E253851005E13B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B767D9FA1E253B3C005E13B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/aboutfoodpin.png; sourceTree = "<group>"; };
+		B767D9FC1E253B59005E13B7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/aboutfoodpin.png"; sourceTree = "<group>"; };
+		B767D9FD1E253B5A005E13B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hant"; path = "zh-Hant.lproj/aboutfoodpin.png"; sourceTree = "<group>"; };
 		B79B7C3D1E13F482002609B4 /* FoodPin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodPin.xcdatamodel; sourceTree = "<group>"; };
 		B7A3A6111E17D8CC0007BD39 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		B7A3A6131E17DF980007BD39 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +102,9 @@
 		B707E9C41DEE97530044FCD0 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				B767D9F61E253ABF005E13B7 /* images */,
+				B767D9F01E253823005E13B7 /* InfoPlist.strings */,
+				B767D9E91E253822005E13B7 /* Localizable.strings */,
 				B707E9C51DEE97530044FCD0 /* AppDelegate.swift */,
 				B707E9C91DEE97530044FCD0 /* Main.storyboard */,
 				B7384AEB1E1FE70B00FC53FC /* Discover.storyboard */,
@@ -116,6 +135,14 @@
 				B75909DE1E0E29E100370322 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B767D9F61E253ABF005E13B7 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B767D9FB1E253B3C005E13B7 /* aboutfoodpin.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +193,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = B707E9B91DEE97530044FCD0;
 			productRefGroup = B707E9C31DEE97530044FCD0 /* Products */;
@@ -183,8 +212,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B707E9D01DEE97530044FCD0 /* LaunchScreen.storyboard in Resources */,
+				B767D9EE1E253823005E13B7 /* InfoPlist.strings in Resources */,
+				B767D9E71E253822005E13B7 /* Localizable.strings in Resources */,
 				B707E9CD1DEE97530044FCD0 /* Assets.xcassets in Resources */,
 				B7384AEC1E1FE70B00FC53FC /* Discover.storyboard in Resources */,
+				B767D9F91E253B3C005E13B7 /* aboutfoodpin.png in Resources */,
 				B7384AEA1E1FE6C200FC53FC /* About.storyboard in Resources */,
 				B707E9CB1DEE97530044FCD0 /* Main.storyboard in Resources */,
 			);
@@ -221,6 +253,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B707E9CA1DEE97530044FCD0 /* Base */,
+				B767D9EA1E253822005E13B7 /* zh-Hans */,
+				B767D9F31E253851005E13B7 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -229,6 +263,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B707E9CF1DEE97530044FCD0 /* Base */,
+				B767D9EB1E253822005E13B7 /* zh-Hans */,
+				B767D9F41E253851005E13B7 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -237,8 +273,38 @@
 			isa = PBXVariantGroup;
 			children = (
 				B7384AE91E1FE6C200FC53FC /* Base */,
+				B767D9E41E25381F005E13B7 /* zh-Hans */,
+				B767D9F11E253850005E13B7 /* zh-Hant */,
 			);
 			name = About.storyboard;
+			sourceTree = "<group>";
+		};
+		B767D9E91E253822005E13B7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B767D9E81E253822005E13B7 /* zh-Hans */,
+				B767D9F21E253850005E13B7 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		B767D9F01E253823005E13B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B767D9EF1E253823005E13B7 /* zh-Hans */,
+				B767D9F51E253851005E13B7 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B767D9FB1E253B3C005E13B7 /* aboutfoodpin.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B767D9FA1E253B3C005E13B7 /* Base */,
+				B767D9FC1E253B59005E13B7 /* zh-Hans */,
+				B767D9FD1E253B5A005E13B7 /* zh-Hant */,
+			);
+			name = aboutfoodpin.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -87,11 +87,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             
             switch rating {
             case "great":
-                self.restaurant.rating = "Absolutely love it! Must try."
+                self.restaurant.rating = NSLocalizedString("Absolutely love it! Must try.", comment: "Great Field")
             case "good":
-                self.restaurant.rating = "Pretty good."
+                self.restaurant.rating = NSLocalizedString("Pretty good.", comment: "Good Field")
             case "dislike":
-                self.restaurant.rating = "I don't like it."
+                self.restaurant.rating = NSLocalizedString("I don't like it.", comment: "Dislike Field")
             default:
                 break
             }
@@ -114,20 +114,20 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         //Configure the cell
         switch indexPath.row {
         case 0:
-            cell.fieldLabel.text = "Name"
+            cell.fieldLabel.text = NSLocalizedString("Name", comment: "Name Field")
             cell.valueLabel.text = self.restaurant.name
         case 1:
-            cell.fieldLabel.text = "Type"
+            cell.fieldLabel.text = NSLocalizedString("Type", comment: "Type Field")
             cell.valueLabel.text = self.restaurant.type
         case 2:
-            cell.fieldLabel.text = "Location"
+            cell.fieldLabel.text = NSLocalizedString("Location", comment: "Location/Address Field")
             cell.valueLabel.text = self.restaurant.location
         case 3:
-            cell.fieldLabel.text = "Phone"
+            cell.fieldLabel.text = NSLocalizedString("Phone", comment: "Phone Field")
             cell.valueLabel.text = self.restaurant.phone
         case 4:
-            cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (self.restaurant.isVisited) ? "Yes, I have been here before. \(self.restaurant.rating)" : "No"
+            cell.fieldLabel.text = NSLocalizedString("Been here", comment: "Have you been here Field")
+            cell.valueLabel.text = (self.restaurant.isVisited) ? NSLocalizedString("Yes, I have been here before. \(self.restaurant.rating)", comment: "Yes, I have been here before"): NSLocalizedString("No", comment: "No, I haven't been here")
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
