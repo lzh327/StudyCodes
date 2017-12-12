@@ -339,8 +339,225 @@ Array(fibs[1..<fibs.endIndex])
 //: A universal bridging mechanism for all Swift types to Objective-C doesn’t just make working with arrays more pleasant. It also applies to other collections, like dictionaries and sets, and it opens up a lot of potential for future enhancements to the interoperability between Swift and Objective-C. For example, now that Swift values can be bridged to Objective-C objects, a future Swift version could conceivably allow Swift value types to conform to @objc protocols.
 
 //:## Dictionaries
+//: Another key data structure in Swift is Dictionary. A dictionary contains keys with corresponding values; duplicate keys aren’t supported. Retrieving a value by its key takes constant time on average, whereas searching an array for a particular element grows linearly with the array’s size. Unlike arrays, dictionaries aren’t ordered. The order in which pairs are enumerated in a for loop is undefined.
 
+//: In the following example, we use a dictionary as the model data for a fictional settings screen in a smartphone app. The screen consists of a list of settings, and each individual setting has a name (the keys in our dictionary) and a value. A value can be one of several data types, such as text, numbers, or booleans. We use an enum with associated values to model this:
+enum Setting {
+    case text(String)
+    case int(Int)
+    case bool(Bool)
+}
 
+let defaultSettings: [String : Setting] = [
+    "Airplane Mode" : .bool(true),
+    "Name" : .text("My iPhone"),
+]
+
+defaultSettings["Name"] //Optional(Setting.text("My iPhone"))
+
+//: We use subscripting to get the value of a setting (for example, defaultSettings["Name"]). Dictionary lookup always returns an optional value. When the specified key doesn’t exist, it returns nil. Contrast this with arrays, which respond to an out-of-bounds access by crashing the program.
+
+//: The rationale for this difference is that array indices and dictionary keys are used very differently. We’ve already seen that it’s quite rare that you actually need to work with array indices directly. And if you do, an array index is usually directly derived from the array in some way (e.g. from a range like 0..<array.count); thus, using an invalid index is a programmer error. On the other hand, it’s very common for dictionary keys to come from some source other than the dictionary itself.
+
+//:### Mutation
+//: Just like with arrays, dictionaries defined using let are immutable: no entries can be added, removed, or changed. And just like with arrays, we can define a mutable variant using var. To remove a value from a dictionary, we can either set it to nil using subscripting or call *removeValue(forKey:)*. The latter additionally returns the deleted value, or nil if the key didn’t exist. If we want to take an immutable dictionary and make changes to it, we have to make a copy:
+var localizedSettings = defaultSettings
+localizedSettings["Name"] = .text("Mein iPhone")
+localizedSettings["Do Not Disturb"] = .bool(true)
+
+//: Note that, again, the value of *defaultSettings* didn’t change. As with key removal, an alternative to updating via subscript is the *updateValue(_:forKey:)* method, which returns the previous value (if any):
+let oldName = localizedSettings.updateValue(.text("Il mio iPhone"), forKey: "Name")
+localizedSettings["Name"]
+oldName
+
+//:### Some Useful Dictionary Extensions
+//: What if we wanted to combine the default settings dictionary with any custom settings the user has changed? Custom settings should override defaults, but the resulting dictionary should still include default values for any keys that haven’t been customized. Essentially, we want to merge two dictionaries, where the dictionary that’s being merged in overwrites duplicate keys. The standard library doesn’t include a function for this, so let’s write one.
+
+//: We can extend Dictionary with a merge method that takes the key-value pairs to be merged in as its only argument. We could make this argument another Dictionary, but this is a good opportunity for a more generic solution. Our requirements for the argument are that it must be a sequence we can loop over, and the sequence’s elements must be key-value pairs of the same type as the receiving dictionary. Any Sequence whose *Iterator.Element* is a *(Key, Value)* pair meets these requirements, so that’s what the method’s generic constraints should express (Key and Value here are the generic type parameters of the Dictionary type we’re extending):
+extension Dictionary {
+    mutating func merge<S>(_ other: S) where S: Sequence, S.Iterator.Element == (key: Key, value: Value) {
+        for (k,v) in other {
+            self[k] = v
+        }
+    }
+}
+
+//: We can use this to merge one dictionary into another, as shown in the following example, but the method argument could just as well be an array of key-value pairs or any other sequence:
+var settings = defaultSettings
+let overriddenSettings: [String : Setting] = ["Name": .text("Jane's iPhone")]
+settings.merge(overriddenSettings)
+settings
+
+//: Another interesting extension is creating a dictionary from a sequence of (Key, Value) pairs. The standard library provides a similar initializer for arrays that comes up very frequently; you use it every time you create an array from a range (*Array(1...10)*) or convert an ArraySlice back into a proper array (*Array(someSlice)*). However, there’s no such initializer for Dictionary.
+
+//: We can start with an empty dictionary and then just merge in the sequence. This makes use of the *merge* method defined above to do the heavy lifting:
+extension Dictionary {
+    init<S: Sequence>(_ sequence: S) where S.Iterator.Element == (key: Key, value: Value) {
+        self = [:]
+        self.merge(sequence)
+    }
+}
+
+// All alarms are turned off by default
+let defaultAlarms = (1..<5).map{(key: "Alarm \($0)", value: false)}
+let alarmsDictionary = Dictionary(defaultAlarms)
+
+//: A third useful extension is a map over the dictionary’s values. Because Dictionary is a Sequence, it already has a map method that produces an array. However, sometimes we want to keep the dictionary structure intact and only transform its values. Our *mapValues* method first calls the standard map to create an array of *(key, transformed value)* pairs and then uses the new initializer we defined above to turn it back into a dictionary:
+extension Dictionary {
+    func mapValues<NewValue>(transform: (Value) -> NewValue) -> [Key: NewValue] {
+        return Dictionary<Key, NewValue>(map{(key, value) in
+            return (key, transform(value))
+        })
+    }
+}
+
+let settingsAsStrings = settings.mapValues{setting -> String in
+    switch setting {
+    case .text(let text):
+        return text
+    case .int(let number):
+        return String(number)
+    case .bool(let value):
+        return String(value)
+    }
+}
+
+settingsAsStrings
+
+//:### Hashable Requirement
+//: Dictionaries are hash tables. The dictionary assigns each key a position in its underlying storage array based on the key’s hashValue. This is why Dictionary requires its Key type to conform to the Hashable protocol. All the basic data types in the standard library already do, including strings, integers, floating-point, and Boolean values. Enumerations without associated values also get automatic Hashable conformance for free.
+
+//: If you want to use your own custom types as dictionary keys, you must add Hashable conformance manually. This requires an implementation of the hashValue property and, because Hashable extends Equatable, an overload of the == operator function for your type. Your implementation must hold an important invariant: two instances that are equal (as defined by your == implementation) must have the same hash value. The reverse isn’t true: two instances with the same hash value don’t necessarily compare equally. This makes sense, considering that there’s only a finite number of distinct hash values, while many hashable types (like strings) have essentially infinite cardinality.
+
+//: The potential for duplicate hash values means that Dictionary must be able to handle collisions. Nevertheless, a good hash function should strive for a minimal number of collisions in order to preserve the collection’s performance characteristics, i.e. the hash function should produce a uniform distribution over the full integer range. In the extreme case where your implementation returns the same hash value (e.g. zero) for every instance, a dictionary’s lookup performance degrades to O(n).
+
+//: The second characteristic of a good hash function is that it’s fast. Keep in mind that the hash value is computed every time a key is inserted, removed, or looked up. If your hashValue implementation takes too much time, it might eat up any gains you got from the O(1) complexity.
+
+//: Writing a good hash function that meets these requirements isn’t easy. For types that are composed of basic data types that are Hashable themselves, XOR’ing the members’ hash values can be a good starting point:
+struct Person {
+    var name: String
+    var zipCode: Int
+    var birthday: Date
+}
+
+extension Person: Equatable {
+    static func ==(lhs: Person, rhs: Person) -> Bool {
+        return lhs.name == rhs.name && lhs.zipCode == rhs.zipCode && lhs.birthday == rhs.birthday
+    }
+}
+
+extension Person: Hashable {
+    var hashValue: Int {
+        return name.hashValue ^ zipCode.hashValue ^ birthday.hashValue
+    }
+}
+
+//: One limitation of this technique is that XOR is symmetric (i.e. a ^ b == b ^ a), which, depending on the characteristics of the data being hashed, could make collisions more likely than necessary. You can add a bitwise rotation to the mix to avoid this.
+
+//: Finally, be extra careful when you use types that don’t have value semantics(e.g. mutable objects) as dictionary keys. If you mutate an object after using it as a dictionary key in a way that changes its hash value and/or equality, you’ll not be able to find it again in the dictionary. The dictionary now stores the object in the wrong slot, effectively corrupting its internal storage. This isn’t a problem with value types because the key in the dictionary doesn’t share your copy’s storage and therefore can’t be mutated from the outside.
+
+//:## Sets
+//: The third major collection type in the standard library is Set. A set is an unordered collection of elements, with each element appearing only once. You can essentially think of a set as a dictionary that only stores keys and no values. Like Dictionary, Set is implemented with a hash table and has similar performance characteristics and requirements. Testing a value for membership in the set is a constant-time operation, and set elements must be Hashable, just like dictionary keys.
+
+//: Use a set instead of an array when you need to test efficiently for membership (an O(n) operation for arrays) and the order of the elements is not important, or when you need to ensure that a collection contains no duplicates.
+
+//: Set conforms to the ExpressibleByArrayLiteral protocol, which means that we can initialize it with an array literal like this:
+let naturals: Set = [1,2,3,2]
+naturals
+naturals.contains(3)
+naturals.contains(0)
+
+//: Like all collections, sets support the common operations we’ve already seen: you can iterate over the elements in a for loop, map or  lter them, and do all other sorts of things.
+
+//:### Set Algebra
+//: Set is closely related to the mathematical concept of a set; it supports all common set operations you learned in math class. For example, we can subtract one set from another:
+let iPods: Set = ["iPod touch", "iPod nano", "iPod mini", "iPod shuffle", "iPod Classic"]
+let discontinuedIPods: Set = ["iPod mini", "iPod Classic"]
+let currentIPods = iPods.subtracting(discontinuedIPods)
+
+//: We can also form the intersection of two sets, i.e. find all elements that are in both:
+let touchscreen: Set = ["iPhone", "iPad", "iPod touch", "iPod nano"]
+let iPodsWithTouch = iPods.intersection(touchscreen)
+
+//: Or, we can form the union of two sets, i.e. combine them into one (removing duplicates, of course):
+var discontinued: Set = ["iBook", "Powerbook", "Power Mac"]
+discontinued.formUnion(discontinuedIPods)
+discontinued
+
+//: Here, we used the mutating variant formUnion to mutate the original set (which, as a result, must be declared with var). Almost all set operations have both non-mutating and mutating forms, the latter beginning with form.... For even more set operations, check out the SetAlgebra protocol.
+
+//:### Index Sets and Character Sets
+//: Set is the only type in the standard library that conforms to SetAlgebra, but the protocol is also adopted by two interesting types in Foundation: IndexSet and CharacterSet. Both of these date back to a time long before Swift was a thing. The way these and other Objective-C classes are now bridged into Swift as fully featured value types — adopting common standard library protocols in the process — is great because they’ll instantly feel familiar to Swift developers.
+
+//: IndexSet represents a set of positive integer values. You can, of course, do this with a Set<Int>, but IndexSet is way more storage efficient because it uses a list of ranges internally. Say you have a table view with 1,000 elements and you want to use a set to manage the indices of the rows the user has selected. A Set<Int> needs to store up to 1,000 elements, depending on how many rows are selected. An IndexSet, on the other hand, stores continuous ranges, so a selection of the first 500 rows in the table only takes two integers to store (the selection’s lower and upper bounds).
+
+//: However, as a user of an IndexSet, you don’t have to worry about the internal structure, as it’s completely hidden behind the familiar SetAlgebra and Collection interfaces. (Unless you want to work on the ranges directly, that is. IndexSet exposes a view to them via its rangeView property, which itself is a collection.) For example, you can add a few ranges to an index set and then map over the indices as if they were individual members:
+var indices = IndexSet()
+indices.insert(integersIn: 1..<5)
+indices.insert(integersIn: 11..<15)
+let evenIndices = indices.filter{$0 % 2 == 0}
+evenIndices
+
+//: CharacterSet is an equally efficient way to store a set of Unicode characters. It’s often used to check if a particular string only contains characters from a specific character subset, such as *alphanumerics* or *decimalDigits*. Unlike IndexSet, CharacterSet isn’t a collection, though. We’ll talk a bit more about CharacterSet in the chapter on strings.
+
+//:### Using Sets Inside Closures
+//: Dictionaries and sets can be very handy data structures to use inside your functions, even when you’re not exposing them to the caller. For example, if we want to write an extension on Sequence to retrieve all unique elements in the sequence, we could easily put the elements in a set and return its contents. However, that won’t be stable: because a set has no defined order, the input elements might get reordered in the result. To fix this, we can write an extension that maintains the order by using an internal Set for bookkeeping:
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: Set<Iterator.Element> = []
+        return filter {
+            if seen.contains($0) {
+                return false
+            } else {
+                seen.insert($0)
+                return true
+            }
+        }
+    }
+}
+
+[1,2,3,12,1,3,4,5,6,4,6].unique()
+
+//: The method above allows us to find all unique elements in a sequence while still maintaining the original order (with the constraint that the elements must be Hashable). Inside the closure we pass to filter, we refer to the variable seen that we defined outside the closure, thus maintaining state over multiple iterations of the closure. In the chapter on functions, we’ll look at this technique in more detail.
+
+//:## Ranges
+//: A range is an interval of values, defined by its lower and upper bounds. You create ranges with the two range operators: ..< for half-open ranges that don’t include their upper bound, and ... for closed ranges that include both bounds:
+let singleDigitNumbers = 0..<10
+let lowercaseLetters = Character("a")...Character("z")
+
+//: Ranges seem like a natural fit to be sequences or collections, so it may surprise you to learn that they’re neither — at least not all of them are.
+
+//: There are now four range types in the standard library. They can be classified in a two-by-two matrix, as follows:
+
+//:![rangeMatrix](rangeMatrix.png)
+
+/*:
+ The columns of the matrix correspond to the two range operators we saw above, which create a [Countable]Range (half-open) or a [Countable]ClosedRange (closed), respectively. Half-open and closed ranges both have their place:
+
+* Only a **half-open range** can represent an **empty interval**(when the lower and upper bounds are equal, as in 5..<5).
+
+* Only a **closed range** can contain the **maximum value** its element type can represent (e.g. 0...Int.max). A half-open range always requires at least one representable value that’s greater than the highest value in the range.
+ 
+ The rows in the table distinguish between “normal” ranges whose element type only conforms to the Comparable protocol (which is the minimum requirement), and ranges over types that are Strideable and use integer steps between elements. Only the latter ranges are collections, inheriting all the powerful functionality we’ve seen in this chapter.
+ 
+ Swift calls these more capable ranges countable because only they can be iterated over. Valid bounds for countable ranges include integer and pointer types, but not floating-point types, because of the integer constraint on the type’s Stride. If you need to iterate over consecutive floating-point values, you can use the *stride(from:to:by)* and *stride(from:through:by)* functions to create such a sequence.
+ 
+ This means that you can iterate over some ranges but not over others. For example, the range of Character values we defined above isn’t a sequence, so this won’t work:
+*/
+/*
+ for char in lowercaseLetters {
+ //...
+ }
+*/
+
+//: Meanwhile, the following is no problem because an integer range is a countable range and thus a collection:
+singleDigitNumbers.map{$0 * $0}
+
+/*:
+ The distinction between the half-open Range and the closed ClosedRange will likely remain, and it can sometimes make working with ranges harder than it used to be. Say you have a function that takes a Range<Character> and you want to pass it the closed character range we created above. You may be surprised to find out that it’s not possible! Inexplicably, there appears to be no way to convert a ClosedRange into a Range. But why? Well, to turn a closed range into an equivalent half-open range, you’d have to find the element that comes after the original range’s upper bound. And that’s simply not possible unless the element is Strideable, which is only guaranteed for countable ranges.
+ 
+ This means the caller of such a function will have to provide the correct type. If the function expects a Range, you can’t use the ... operator to create it. We’re not certain how big of a limitation this is in practice, since most ranges are likely integer based, but it’s definitely unintuitive.
+*/
 
 
 
